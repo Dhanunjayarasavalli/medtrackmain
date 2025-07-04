@@ -1,0 +1,156 @@
+2025-07-04 09:53:40,005 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.224.250:5000
+2025-07-04 09:53:40,006 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-04 09:53:49,856 - werkzeug - INFO - 127.0.0.1 - - [04/Jul/2025 09:53:49] "GET / HTTP/1.1" 200 -
+2025-07-04 09:53:49,997 - werkzeug - INFO - 127.0.0.1 - - [04/Jul/2025 09:53:49] "GET /static/css/custom.css HTTP/1.1" 200 -
+2025-07-04 09:53:50,036 - werkzeug - INFO - 127.0.0.1 - - [04/Jul/2025 09:53:50] "GET /static/js/custom.js HTTP/1.1" 200 -
+2025-07-04 09:53:54,845 - werkzeug - INFO - 127.0.0.1 - - [04/Jul/2025 09:53:54] "GET /login HTTP/1.1" 200 -
+2025-07-04 09:53:54,886 - werkzeug - INFO - 127.0.0.1 - - [04/Jul/2025 09:53:54] "[36mGET /static/css/custom.css HTTP/1.1[0m" 304 -
+2025-07-04 09:53:54,888 - werkzeug - INFO - 127.0.0.1 - - [04/Jul/2025 09:53:54] "[36mGET /static/js/custom.js HTTP/1.1[0m" 304 -
+2025-07-04 09:53:55,865 - werkzeug - INFO - 127.0.0.1 - - [04/Jul/2025 09:53:55] "GET /register HTTP/1.1" 200 -
+2025-07-04 09:53:55,910 - werkzeug - INFO - 127.0.0.1 - - [04/Jul/2025 09:53:55] "[36mGET /static/css/custom.css HTTP/1.1[0m" 304 -
+2025-07-04 09:53:55,914 - werkzeug - INFO - 127.0.0.1 - - [04/Jul/2025 09:53:55] "[36mGET /static/js/custom.js HTTP/1.1[0m" 304 -
+2025-07-04 09:54:22,001 - app - ERROR - Exception on /register [POST]
+Traceback (most recent call last):
+  File "C:\Users\arasa\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\arasa\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\arasa\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\arasa\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\arasa\OneDrive\Desktop\MedTrack-Main\app.py", line 153, in register
+    existing_user = user_table.get_item(Key={'email': email}).get('Item')
+                    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\arasa\AppData\Local\Programs\Python\Python313\Lib\site-packages\boto3\resources\factory.py", line 581, in do_action
+    response = action(self, *args, **kwargs)
+  File "C:\Users\arasa\AppData\Local\Programs\Python\Python313\Lib\site-packages\boto3\resources\action.py", line 88, in __call__
+    response = getattr(parent.meta.client, operation_name)(*args, **params)
+  File "C:\Users\arasa\AppData\Local\Programs\Python\Python313\Lib\site-packages\botocore\client.py", line 601, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\arasa\AppData\Local\Programs\Python\Python313\Lib\site-packages\botocore\context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\arasa\AppData\Local\Programs\Python\Python313\Lib\site-packages\botocore\client.py", line 1056, in _make_api_call
+    http, parsed_response = self._make_request(
+                            ~~~~~~~~~~~~~~~~~~^
+        operation_model, request_dict, request_context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\arasa\AppData\Local\Programs\Python\Python313\Lib\site-packages\botocore\client.py", line 1080, in _make_request
+    return self._endpoint.make_request(operation_model, request_dict)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\arasa\AppData\Local\Programs\Python\Python313\Lib\site-packages\botocore\endpoint.py", line 118, in make_request
+    return self._send_request(request_dict, operation_model)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\arasa\AppData\Local\Programs\Python\Python313\Lib\site-packages\botocore\endpoint.py", line 195, in _send_request
+    request = self.create_request(request_dict, operation_model)
+  File "C:\Users\arasa\AppData\Local\Programs\Python\Python313\Lib\site-packages\botocore\endpoint.py", line 131, in create_request
+    self._event_emitter.emit(
+    ~~~~~~~~~~~~~~~~~~~~~~~~^
+        event_name,
+        ^^^^^^^^^^^
+        request=request,
+        ^^^^^^^^^^^^^^^^
+        operation_name=operation_model.name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\arasa\AppData\Local\Programs\Python\Python313\Lib\site-packages\botocore\hooks.py", line 412, in emit
+    return self._emitter.emit(aliased_event_name, **kwargs)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\arasa\AppData\Local\Programs\Python\Python313\Lib\site-packages\botocore\hooks.py", line 256, in emit
+    return self._emit(event_name, kwargs)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\arasa\AppData\Local\Programs\Python\Python313\Lib\site-packages\botocore\hooks.py", line 239, in _emit
+    response = handler(**kwargs)
+  File "C:\Users\arasa\AppData\Local\Programs\Python\Python313\Lib\site-packages\botocore\signers.py", line 108, in handler
+    return self.sign(operation_name, request)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\arasa\AppData\Local\Programs\Python\Python313\Lib\site-packages\botocore\signers.py", line 200, in sign
+    auth.add_auth(request)
+    ~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\arasa\AppData\Local\Programs\Python\Python313\Lib\site-packages\botocore\auth.py", line 421, in add_auth
+    raise NoCredentialsError()
+botocore.exceptions.NoCredentialsError: Unable to locate credentials
+2025-07-04 09:54:22,029 - werkzeug - INFO - 127.0.0.1 - - [04/Jul/2025 09:54:22] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+2025-07-04 09:54:22,078 - werkzeug - INFO - 127.0.0.1 - - [04/Jul/2025 09:54:22] "[36mGET /static/css/custom.css HTTP/1.1[0m" 304 -
+2025-07-04 09:54:22,084 - werkzeug - INFO - 127.0.0.1 - - [04/Jul/2025 09:54:22] "[36mGET /static/js/custom.js HTTP/1.1[0m" 304 -
+2025-07-04 09:56:15,539 - werkzeug - INFO - 127.0.0.1 - - [04/Jul/2025 09:56:15] "GET / HTTP/1.1" 200 -
+2025-07-04 09:56:15,595 - werkzeug - INFO - 127.0.0.1 - - [04/Jul/2025 09:56:15] "[36mGET /static/css/custom.css HTTP/1.1[0m" 304 -
+2025-07-04 09:56:15,598 - werkzeug - INFO - 127.0.0.1 - - [04/Jul/2025 09:56:15] "[36mGET /static/js/custom.js HTTP/1.1[0m" 304 -
+2025-07-04 09:56:28,478 - werkzeug - INFO - 127.0.0.1 - - [04/Jul/2025 09:56:28] "GET /register HTTP/1.1" 200 -
+2025-07-04 09:56:28,528 - werkzeug - INFO - 127.0.0.1 - - [04/Jul/2025 09:56:28] "[36mGET /static/css/custom.css HTTP/1.1[0m" 304 -
+2025-07-04 09:56:28,535 - werkzeug - INFO - 127.0.0.1 - - [04/Jul/2025 09:56:28] "[36mGET /static/js/custom.js HTTP/1.1[0m" 304 -
+2025-07-04 09:56:53,579 - app - ERROR - Exception on /register [POST]
+Traceback (most recent call last):
+  File "C:\Users\arasa\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\arasa\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\arasa\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\arasa\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\arasa\OneDrive\Desktop\MedTrack-Main\app.py", line 142, in register
+    flash('Passwords do not match.', 'danger')
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\arasa\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\helpers.py", line 335, in flash
+    session["_flashes"] = flashes
+    ~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\arasa\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\sessions.py", line 104, in _fail
+    raise RuntimeError(
+    ...<3 lines>...
+    )
+RuntimeError: The session is unavailable because no secret key was set.  Set the secret_key on the application to something unique and secret.
+2025-07-04 09:56:53,585 - werkzeug - INFO - 127.0.0.1 - - [04/Jul/2025 09:56:53] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+2025-07-04 09:56:53,631 - werkzeug - INFO - 127.0.0.1 - - [04/Jul/2025 09:56:53] "[36mGET /static/css/custom.css HTTP/1.1[0m" 304 -
+2025-07-04 09:56:53,640 - werkzeug - INFO - 127.0.0.1 - - [04/Jul/2025 09:56:53] "[36mGET /static/js/custom.js HTTP/1.1[0m" 304 -
+2025-07-04 09:56:57,460 - werkzeug - INFO - 127.0.0.1 - - [04/Jul/2025 09:56:57] "GET / HTTP/1.1" 200 -
+2025-07-04 09:56:57,500 - werkzeug - INFO - 127.0.0.1 - - [04/Jul/2025 09:56:57] "[36mGET /static/css/custom.css HTTP/1.1[0m" 304 -
+2025-07-04 09:56:57,508 - werkzeug - INFO - 127.0.0.1 - - [04/Jul/2025 09:56:57] "[36mGET /static/js/custom.js HTTP/1.1[0m" 304 -
+2025-07-04 10:20:52,925 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://127.0.0.1:5000
+2025-07-04 10:20:52,925 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-04 10:21:14,267 - werkzeug - INFO - 127.0.0.1 - - [04/Jul/2025 10:21:14] "GET / HTTP/1.1" 200 -
+2025-07-04 10:21:14,317 - werkzeug - INFO - 127.0.0.1 - - [04/Jul/2025 10:21:14] "[36mGET /static/css/custom.css HTTP/1.1[0m" 304 -
+2025-07-04 10:21:14,335 - werkzeug - INFO - 127.0.0.1 - - [04/Jul/2025 10:21:14] "[36mGET /static/js/custom.js HTTP/1.1[0m" 304 -
+2025-07-04 10:21:23,173 - werkzeug - INFO - 127.0.0.1 - - [04/Jul/2025 10:21:23] "GET /register HTTP/1.1" 200 -
+2025-07-04 10:21:23,211 - werkzeug - INFO - 127.0.0.1 - - [04/Jul/2025 10:21:23] "[36mGET /static/css/custom.css HTTP/1.1[0m" 304 -
+2025-07-04 10:21:23,212 - werkzeug - INFO - 127.0.0.1 - - [04/Jul/2025 10:21:23] "[36mGET /static/js/custom.js HTTP/1.1[0m" 304 -
+2025-07-04 10:21:54,408 - app - ERROR - Exception on /register [POST]
+Traceback (most recent call last):
+  File "C:\Users\arasa\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\arasa\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\arasa\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\arasa\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\arasa\OneDrive\Desktop\MedTrack-Main\app.py", line 142, in register
+    flash('Passwords do not match.', 'danger')
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\arasa\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\helpers.py", line 335, in flash
+    session["_flashes"] = flashes
+    ~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\arasa\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\sessions.py", line 104, in _fail
+    raise RuntimeError(
+    ...<3 lines>...
+    )
+RuntimeError: The session is unavailable because no secret key was set.  Set the secret_key on the application to something unique and secret.
+2025-07-04 10:21:54,411 - werkzeug - INFO - 127.0.0.1 - - [04/Jul/2025 10:21:54] "[35m[1mPOST /register HTTP/1.1[0m" 500 -
+2025-07-04 10:21:54,453 - werkzeug - INFO - 127.0.0.1 - - [04/Jul/2025 10:21:54] "[36mGET /static/css/custom.css HTTP/1.1[0m" 304 -
+2025-07-04 10:21:54,458 - werkzeug - INFO - 127.0.0.1 - - [04/Jul/2025 10:21:54] "[36mGET /static/js/custom.js HTTP/1.1[0m" 304 -
+2025-07-04 10:22:01,508 - werkzeug - INFO - 127.0.0.1 - - [04/Jul/2025 10:22:01] "GET / HTTP/1.1" 200 -
+2025-07-04 10:22:01,550 - werkzeug - INFO - 127.0.0.1 - - [04/Jul/2025 10:22:01] "[36mGET /static/css/custom.css HTTP/1.1[0m" 304 -
+2025-07-04 10:22:01,551 - werkzeug - INFO - 127.0.0.1 - - [04/Jul/2025 10:22:01] "[36mGET /static/js/custom.js HTTP/1.1[0m" 304 -
